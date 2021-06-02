@@ -11,6 +11,7 @@ namespace VirtualPet
             Console.WriteLine("Enter your pet's name");
             string userInput = Console.ReadLine();
             pet1.SetName  (userInput);
+            Console.WriteLine("Your pet's name is "+pet1.GetName()+".");
         }
     }
 }
