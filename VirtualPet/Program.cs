@@ -10,8 +10,12 @@ namespace VirtualPet
             Pet pet1 = new Pet();
             Console.WriteLine("Enter your pet's name");
             string userInput = Console.ReadLine();
-            pet1.SetName  (userInput);
-            Console.WriteLine("Your pet's name is "+pet1.GetName()+".");
+            pet1.SetName(userInput);
+
+
+            Console.WriteLine("Enter Pet Species Here:");
+            string userSpecies = Console.ReadLine();
+             pet1.SetSpecies(userSpecies); 
         }
     }
 }
