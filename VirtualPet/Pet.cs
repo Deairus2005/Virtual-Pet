@@ -34,6 +34,11 @@ namespace VirtualPet
             return Species;
 
         }
+        public int Hunger = 50;
+        public int GetHunger() 
+        {
+            return Hunger;
+        }
 
     }
 
