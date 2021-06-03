@@ -26,5 +26,27 @@ namespace VirtualPet.Tests
 			//Assert.
 			Assert.Equal(1,DemoShelter.GetPetCount());
 		}
+
+		[Fact]
+
+		public void Remove_A_Pet_Should_Decrement_Pets_by_1()
+        {
+			//Arrange.
+			Pet DemoPet = new Pet();
+
+
+			//Act.
+			DemoShelter.AddPet(DemoPet);
+			DemoShelter.RemovePet(DemoPet);
+
+
+			//Assert.
+			Assert.Equal(0, DemoShelter.GetPetCount());
+
+
+		}
+
+
+
 	}
 }

@@ -17,5 +17,10 @@ namespace VirtualPet
 		{
 			return PetList.Count;
 		}
+
+		public void RemovePet(Pet p)
+        {
+			PetList.Remove(p);
+		}
 	}
 }
