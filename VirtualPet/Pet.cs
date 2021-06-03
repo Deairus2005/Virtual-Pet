@@ -46,6 +46,14 @@ namespace VirtualPet
             return Boredom;
         }
 
+        public int Health = 30;
+        public int GetHealth()
+        {
+            return Health;
+        }
+
     }
+
+        
 
 }
