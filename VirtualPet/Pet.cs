@@ -35,9 +35,15 @@ namespace VirtualPet
 
         }
         public int Hunger = 50;
-        public int GetHunger() 
+        public int GetHunger()
         {
             return Hunger;
+        }
+
+        public int Boredom = 60;
+        public int GetBoredom()
+        {
+            return Boredom;
         }
 
     }
