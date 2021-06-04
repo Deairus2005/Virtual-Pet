@@ -197,7 +197,14 @@ namespace VirtualPet.Tests
 
             Assert.Equal(40, testPet.GetHealth());
         }
-            
+          
+        [Fact]
+        public void TakeToDoctor_should_increase_Health_by_20()
+        {
+            testPet.TakeToDoctor();
+
+            Assert.Equal(50, testPet.GetHealth());
+        }
     }
 
 }

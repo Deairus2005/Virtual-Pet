@@ -46,7 +46,21 @@ namespace VirtualPet.Tests
 
 		}
 
-	
+		//Ability for players to 
+		//interact with pet, 
+         //such as feed, play, 
+         //and take to doctor
+
+		[Fact]
+
+		public void InteractWithPet_should_feed_play_taketoDoctor()
+        {
+
+        } 
+
+
+
+
 
 
 	}

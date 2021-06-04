@@ -51,10 +51,10 @@ namespace VirtualPet
                 Console.WriteLine("1: Display all pets in shelter.");
                 Console.WriteLine("2: Add a pet to the shelter.");
                 Console.WriteLine("3: Remove a pet from the shelter.");
-                Console.WriteLine("4: Option 4");
-                Console.WriteLine("5: Option 5");
-                Console.WriteLine("6: Option 6");
-                Console.WriteLine("7: Option 7");
+                Console.WriteLine("4:  Interact with a Pet");
+                Console.WriteLine("5: Feed Pet");
+                Console.WriteLine("6: Play with Pet");
+                Console.WriteLine("7: Take Pet to the Doctor");
                 Console.WriteLine("8: Option 8");
                 Console.WriteLine("9: Option 9");
                 Console.WriteLine("10: Option 10");
@@ -99,22 +99,32 @@ namespace VirtualPet
 						}
                         int PetToRemove=Convert.ToInt32(Console.ReadLine());
 
+                        if(TheShelter.SelectedPet == TheShelter.PetList[PetToRemove - 1])
+                        {
+                            TheShelter.SelectedPet = null;
+                        }
+
                         string PetNameThatHasBeenRemoved=TheShelter.PetList[ (PetToRemove-1) ].GetName();
                         TheShelter.RemovePet( TheShelter.PetList[ (PetToRemove-1) ] );
                         Console.WriteLine(PetNameThatHasBeenRemoved+" was removed from the shelter.");
-                    break;
+                        break;
                     case "4":
-
+                        TheShelter.SelectAPet();
                     break;
                     case "5":
-
+                         TheShelter.SelectedPet.Feed();
+                        Console.WriteLine("You've Fed " + TheShelter.SelectedPet.GetName());
                     break;
                     case "6":
+                        TheShelter.SelectedPet.Play();
+                        Console.WriteLine("You've Played with " + TheShelter.SelectedPet.GetName());
 
-                    break;
+                        break;
                     case "7":
+                        TheShelter.SelectedPet.TakeToDoctor();
+                        Console.WriteLine("You've Taken " + TheShelter.SelectedPet.GetName() + " to the Doctor");
 
-                    break;
+                        break;
                     case "8":
 
                     break;

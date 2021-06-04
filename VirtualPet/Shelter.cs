@@ -9,9 +9,11 @@ namespace VirtualPet
 	public class Shelter
 	{
 		public List<Pet> PetList=new List<Pet>();
+		public Pet SelectedPet;
 		public void AddPet(Pet p)
 		{
 			PetList.Add(p);
+			
 		}
 		public void RemovePet(Pet p)
         {
@@ -39,6 +41,18 @@ namespace VirtualPet
 				if(i!=(PetList.Count()-1))
 					Console.WriteLine(); //pet seperator.
 			}
+		}
+		public void SelectAPet()
+        {
+			Console.WriteLine("Select A Pet to Interact with");
+			for (int i = 0; i < PetList.Count; i++) //prints the pets.
+			{
+				Console.WriteLine("Pet " + (i + 1) + ": " + PetList[i].GetName());
+			}
+			int PetToSelect = Convert.ToInt32(Console.ReadLine());
+			SelectedPet = PetList[PetToSelect - 1];
+
+
 		}
 	}
 }
