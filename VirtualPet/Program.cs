@@ -17,12 +17,12 @@ namespace VirtualPet
             As players interact with pet, the pet’s status changes
             As “time” ticks by, the pet’s status changes negatively
         */
-        private Shelter TheShelter=new Shelter();
+        private static Shelter TheShelter=new Shelter();
         static void Main(string[] args)
         {
+            /*
             Pet pet1 = new Pet();
 
-            /*
             Console.WriteLine("Enter your pet's name");
             string userInput = Console.ReadLine();
             pet1.SetName(userInput);
@@ -32,6 +32,27 @@ namespace VirtualPet
             pet1.SetSpecies(userSpecies);
             */
 
+            //Pet 1
+            Pet Dog=new Pet();
+            Dog.SetName("Skippy");
+            Dog.SetSpecies("Dog");
+            TheShelter.AddPet(Dog);
+
+            //Pet 2
+            Pet Cat=new Pet();
+            Cat.SetName("Desmond");
+            Cat.SetSpecies("Cat");
+            TheShelter.AddPet(Cat);
+
+            //Pet 3
+            Pet Fish=new Pet();
+            Fish.SetName("Flipper");
+            Fish.SetSpecies("Fish");
+            TheShelter.AddPet(Fish);
+            
+            TheShelter.DisplayPets();
+
+            /*
             bool IsRunning=true;
             while(IsRunning)
 			{
@@ -68,6 +89,7 @@ namespace VirtualPet
                     default:Console.WriteLine("Enter a valid option please...");Console.ReadLine();break;
                 }
 			}
+            */
         }
     }
 }

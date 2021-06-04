@@ -17,6 +17,17 @@ namespace VirtualPet
 		{
 			return PetList.Count;
 		}
+		public void DisplayPets()
+		{
+			for(int i=0;i<PetList.Count;i++)
+			{
+				Console.WriteLine("Pet: "+(i+1)); //pet id.
+				Console.WriteLine("Name: "+PetList[i].GetName()); //gets the name and prints it.
+				Console.WriteLine("Species: "+PetList[i].GetSpecies()); //gets the species and prints it.
+				Console.WriteLine(); //pet seperator.
+			}
+			
+		}
 
 		public void RemovePet(Pet p)
         {
