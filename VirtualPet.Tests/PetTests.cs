@@ -187,7 +187,17 @@ namespace VirtualPet.Tests
         {
             testPet.Tick();
 
+             
             Assert.Equal(25, testPet.GetHealth());
         }
+        [Fact]
+        public void TakeANap_Should_Increase_Health_By_10()
+        {
+            testPet.TakeANap();
+
+            Assert.Equal(40, testPet.GetHealth());
+        }
+            
     }
+
 }

@@ -73,6 +73,16 @@ namespace VirtualPet
             Boredom = Boredom + 5;
             Health = Health - 5;
 		}
+        public void TakeANap() 
+        {
+            Health = Health + 10;
+            Boredom = Boredom - 5;
+            Hunger = Hunger + 10;
+        }
+
+
+
+
     }
 
         
