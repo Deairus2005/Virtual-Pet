@@ -80,7 +80,12 @@ namespace VirtualPet
             Hunger = Hunger + 10;
         }
 
-
+        public void TakeToDoctor()
+        {
+            Health = Health + 20;
+            Boredom = Boredom + 5;
+            Hunger = Hunger + 10;
+        }
 
 
     }
