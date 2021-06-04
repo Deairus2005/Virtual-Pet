@@ -20,19 +20,6 @@ namespace VirtualPet
         private static Shelter TheShelter=new Shelter();
         static void Main(string[] args)
         {
-            /*
-            Pet pet1 = new Pet();
-
-            Console.WriteLine("Enter your pet's name");
-            string userInput = Console.ReadLine();
-            pet1.SetName(userInput);
-
-            Console.WriteLine("Enter Pet Species Here:");
-            string userSpecies = Console.ReadLine();
-            pet1.SetSpecies(userSpecies);
-            */
-
-            
             //Default Pets.
             //Pet 1
             Pet Dog=new Pet();
@@ -80,6 +67,7 @@ namespace VirtualPet
 
                 string Input=Console.ReadLine();
                 
+                Console.Clear();
 				switch(Input.ToUpper())
 				{
                     case "1":
@@ -98,7 +86,12 @@ namespace VirtualPet
                         Console.WriteLine("Your pet has been added to the shelter.");
                     break;
                     case "3":
-                        Console.Clear();
+                        if(TheShelter.PetList.Count<=0)
+                        {
+                            Console.WriteLine("There are no pets to remove from the shelter.");
+                            break;
+                        }
+
                         Console.WriteLine("Select a pet to remove from the shelter.");
                         for(int i=0;i<TheShelter.PetList.Count;i++) //prints the pets.
 						{
@@ -110,20 +103,48 @@ namespace VirtualPet
                         TheShelter.RemovePet( TheShelter.PetList[ (PetToRemove-1) ] );
                         Console.WriteLine(PetNameThatHasBeenRemoved+" was removed from the shelter.");
                     break;
-                    case "4":break;
-                    case "5":break;
-                    case "6":break;
-                    case "7":break;
-                    case "8":break;
-                    case "9":break;
-                    case "10":break;
-                    case "11":break;
-                    case "12":break;
-                    case "13":break;
-                    case "14":break;
-                    case "15":break;
-                    case "E":IsRunning=false;break;
-                    default:Console.WriteLine("Enter a valid option please...");break;
+                    case "4":
+
+                    break;
+                    case "5":
+
+                    break;
+                    case "6":
+
+                    break;
+                    case "7":
+
+                    break;
+                    case "8":
+
+                    break;
+                    case "9":
+
+                    break;
+                    case "10":
+
+                    break;
+                    case "11":
+
+                    break;
+                    case "12":
+
+                    break;
+                    case "13":
+
+                    break;
+                    case "14":
+
+                    break;
+                    case "15":
+
+                    break;
+                    case "E":
+                        IsRunning=false;
+                    break;
+                    default:
+                        Console.WriteLine("Enter a valid option please...");
+                    break;
                 }
                 Console.ReadLine();
 			}
