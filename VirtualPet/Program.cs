@@ -32,6 +32,8 @@ namespace VirtualPet
             pet1.SetSpecies(userSpecies);
             */
 
+            
+            //Default Pets.
             //Pet 1
             Pet Dog=new Pet();
             Dog.SetName("Skippy");
@@ -50,18 +52,18 @@ namespace VirtualPet
             Fish.SetSpecies("Fish");
             TheShelter.AddPet(Fish);
             
-            TheShelter.DisplayPets();
+            
 
-            /*
+            
             bool IsRunning=true;
             while(IsRunning)
 			{
                 Console.Clear();
                 Console.WriteLine("Hello! Welcome to Virtual Pets\n");
 
-                Console.WriteLine("1: Option 1");
-                Console.WriteLine("2: Option 2");
-                Console.WriteLine("3: Option 3");
+                Console.WriteLine("1: Display all pets in shelter.");
+                Console.WriteLine("2: Add a pet to the shelter.");
+                Console.WriteLine("3: Remove a pet from the shelter.");
                 Console.WriteLine("4: Option 4");
                 Console.WriteLine("5: Option 5");
                 Console.WriteLine("6: Option 6");
@@ -69,15 +71,45 @@ namespace VirtualPet
                 Console.WriteLine("8: Option 8");
                 Console.WriteLine("9: Option 9");
                 Console.WriteLine("10: Option 10");
+                Console.WriteLine("11: Option 11");
+                Console.WriteLine("12: Option 12");
+                Console.WriteLine("13: Option 13");
+                Console.WriteLine("14: Option 14");
+                Console.WriteLine("15: Option 15");
                 Console.WriteLine("E: Exit");
 
                 string Input=Console.ReadLine();
                 
 				switch(Input.ToUpper())
 				{
-                    case "1":break;
-                    case "2":break;
-                    case "3":break;
+                    case "1":
+                        TheShelter.DisplayPets();
+                    break;
+                    case "2":
+                        Pet NewPet=new Pet();
+
+                        Console.WriteLine("What's your pets name?");
+                        NewPet.SetName(Console.ReadLine());
+
+                        Console.WriteLine("What's your pets species?");
+                        NewPet.SetSpecies(Console.ReadLine());
+
+                        TheShelter.AddPet(NewPet);
+                        Console.WriteLine("Your pet has been added to the shelter.");
+                    break;
+                    case "3":
+                        Console.Clear();
+                        Console.WriteLine("Select a pet to remove from the shelter.");
+                        for(int i=0;i<TheShelter.PetList.Count;i++) //prints the pets.
+						{
+                            Console.WriteLine("Pet "+(i+1)+": "+TheShelter.PetList[i].GetName());
+						}
+                        int PetToRemove=Convert.ToInt32(Console.ReadLine());
+
+                        string PetNameThatHasBeenRemoved=TheShelter.PetList[ (PetToRemove-1) ].GetName();
+                        TheShelter.RemovePet( TheShelter.PetList[ (PetToRemove-1) ] );
+                        Console.WriteLine(PetNameThatHasBeenRemoved+" was removed from the shelter.");
+                    break;
                     case "4":break;
                     case "5":break;
                     case "6":break;
@@ -85,11 +117,17 @@ namespace VirtualPet
                     case "8":break;
                     case "9":break;
                     case "10":break;
+                    case "11":break;
+                    case "12":break;
+                    case "13":break;
+                    case "14":break;
+                    case "15":break;
                     case "E":IsRunning=false;break;
-                    default:Console.WriteLine("Enter a valid option please...");Console.ReadLine();break;
+                    default:Console.WriteLine("Enter a valid option please...");break;
                 }
+                Console.ReadLine();
 			}
-            */
+            
         }
     }
 }
