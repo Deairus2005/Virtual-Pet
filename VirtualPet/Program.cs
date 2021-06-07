@@ -18,6 +18,7 @@ namespace VirtualPet
             As “time” ticks by, the pet’s status changes negatively
         */
         private static Shelter TheShelter=new Shelter();
+        
         static void Main(string[] args)
         {
             //Default Pets.
@@ -32,15 +33,25 @@ namespace VirtualPet
             Cat.SetName("Desmond");
             Cat.SetSpecies("Cat");
             TheShelter.AddPet(Cat);
-
+            
             //Pet 3
             Pet Fish=new Pet();
             Fish.SetName("Flipper");
             Fish.SetSpecies("Fish");
             TheShelter.AddPet(Fish);
-            
-            
 
+            //Pet 4
+            RoboPet RobotFish=new RoboPet();
+            RobotFish.SetName("Flippy");
+            RobotFish.SetSpecies("Robot Fish");
+            TheShelter.AddPet(RobotFish);
+            
+            if(5>3)
+			{
+                Console.WriteLine("Hello world.");
+			}
+
+            DoTick();
             
             bool IsRunning=true;
             while(IsRunning)
@@ -51,7 +62,7 @@ namespace VirtualPet
                 Console.WriteLine("1: Display all pets in shelter.");
                 Console.WriteLine("2: Add a pet to the shelter.");
                 Console.WriteLine("3: Remove a pet from the shelter.");
-                Console.WriteLine("4:  Interact with a Pet");
+                Console.WriteLine("4: Interact with a Pet");
                 Console.WriteLine("5: Feed Pet");
                 Console.WriteLine("6: Play with Pet");
                 Console.WriteLine("7: Take Pet to the Doctor");
@@ -86,45 +97,67 @@ namespace VirtualPet
                         Console.WriteLine("Your pet has been added to the shelter.");
                     break;
                     case "3":
-                        if(TheShelter.PetList.Count<=0)
+                        if(TheShelter.NormalPetList.Count<=0)
                         {
                             Console.WriteLine("There are no pets to remove from the shelter.");
                             break;
                         }
 
                         Console.WriteLine("Select a pet to remove from the shelter.");
-                        for(int i=0;i<TheShelter.PetList.Count;i++) //prints the pets.
+                        for(int i=0;i<TheShelter.NormalPetList.Count;i++) //prints the pets.
 						{
-                            Console.WriteLine("Pet "+(i+1)+": "+TheShelter.PetList[i].GetName());
+                            Console.WriteLine("Pet "+(i+1)+": "+TheShelter.NormalPetList[i].GetName());
 						}
                         int PetToRemove=Convert.ToInt32(Console.ReadLine());
 
-                        if(TheShelter.SelectedPet == TheShelter.PetList[PetToRemove - 1])
+                        if(TheShelter.SelectedPet == TheShelter.NormalPetList[PetToRemove - 1])
                         {
                             TheShelter.SelectedPet = null;
                         }
 
-                        string PetNameThatHasBeenRemoved=TheShelter.PetList[ (PetToRemove-1) ].GetName();
-                        TheShelter.RemovePet( TheShelter.PetList[ (PetToRemove-1) ] );
+                        string PetNameThatHasBeenRemoved=TheShelter.NormalPetList[ (PetToRemove-1) ].GetName();
+                        TheShelter.RemovePet( TheShelter.NormalPetList[ (PetToRemove-1) ] );
                         Console.WriteLine(PetNameThatHasBeenRemoved+" was removed from the shelter.");
                         break;
                     case "4":
                         TheShelter.SelectAPet();
                     break;
                     case "5":
-                         TheShelter.SelectedPet.Feed();
+                        if(TheShelter.SelectedPet==null) //making sure that there is a selected pet.
+						{
+                            Console.WriteLine("Please select a pet first before interacting with it.");
+                            for(int i=0;i<"Please select a pet first before interacting with it.".Length;i++)
+                                Console.Write((char)0x02);
+                            Console.WriteLine();
+                            break;
+						}
+                        TheShelter.SelectedPet.Feed();
                         Console.WriteLine("You've Fed " + TheShelter.SelectedPet.GetName());
                     break;
                     case "6":
+                        if(TheShelter.SelectedPet==null) //making sure that there is a selected pet.
+						{
+                            Console.WriteLine("Please select a pet first before interacting with it.");
+                            for(int i=0;i<"Please select a pet first before interacting with it.".Length;i++)
+                                Console.Write((char)0x02);
+                            Console.WriteLine();
+                            break;
+						}
                         TheShelter.SelectedPet.Play();
                         Console.WriteLine("You've Played with " + TheShelter.SelectedPet.GetName());
-
-                        break;
+                    break;
                     case "7":
+                        if(TheShelter.SelectedPet==null) //making sure that there is a selected pet.
+						{
+                            Console.WriteLine("Please select a pet first before interacting with it.");
+                            for(int i=0;i<"Please select a pet first before interacting with it.".Length;i++)
+                                Console.Write((char)0x02);
+                            Console.WriteLine();
+                            break;
+						}
                         TheShelter.SelectedPet.TakeToDoctor();
                         Console.WriteLine("You've Taken " + TheShelter.SelectedPet.GetName() + " to the Doctor");
-
-                        break;
+                    break;
                     case "8":
 
                     break;
@@ -160,5 +193,27 @@ namespace VirtualPet
 			}
             
         }
+        static void DoTick()
+		{
+            System.Threading.Thread TickThread=new System.Threading.Thread
+            (
+                new System.Threading.ThreadStart
+                (
+                    delegate
+					{
+                        while(true)
+						{
+                            System.Threading.Thread.Sleep(1000);
+                            for(int i=0;i<TheShelter.NormalPetList.Count;i++)
+							{
+                                TheShelter.NormalPetList[i].Tick();
+							}
+						}
+                        
+					}
+                )
+            );
+            TickThread.Start();
+		}
     }
 }

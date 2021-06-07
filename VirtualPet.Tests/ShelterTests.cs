@@ -15,7 +15,7 @@ namespace VirtualPet.Tests
 			DemoShelter=new Shelter();
 		}
 		[Fact]
-		public void Add_A_Pet()
+		public void Add_A_Pet_Should_Increment_Pets_by_1()
 		{
 			//Arrange.
 			Pet DemoPet=new Pet();
@@ -51,12 +51,6 @@ namespace VirtualPet.Tests
          //such as feed, play, 
          //and take to doctor
 
-		[Fact]
-
-		public void InteractWithPet_should_feed_play_taketoDoctor()
-        {
-
-        } 
 
 
 

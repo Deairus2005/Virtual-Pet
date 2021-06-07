@@ -5,91 +5,78 @@ using System.Text;
 namespace VirtualPet
 {
     public class Pet
-
     {
-        private string Name
-        {
-            get; set;
-        }
-        public void SetName(string name)
-        {
-            Name = name;
-        }
+        private string Name{get;set;}
+        public void SetName(string NameToSet){Name = NameToSet;}
+        public string GetName(){return Name;}
+        
 
-        public string GetName()
+        private string Species { get; set; }
+        public void SetSpecies(string SpeciesToSet){ Species = SpeciesToSet;}
+        public string GetSpecies(){return Species;}
+
+
+        private int Hunger = 50;
+        public void SetHunger(int HungerLevel) { Hunger = HungerLevel;}
+        public int GetHunger(){return Hunger;}
+
+
+        private int Boredom = 60;
+        public void SetBoredom(int BoredomLevel) { Boredom = BoredomLevel;}
+        public int GetBoredom(){return Boredom;}
+
+
+        private int Health = 30;
+        public void SetHealth(int HealthNumber) { Health = HealthNumber;}
+        public int GetHealth(){return Health;}
+
+
+        private int Ceiling(int Input,int Addition)
+		{
+            if(Input+Addition>100)
+                return 100;
+            else
+                return Input+Addition;
+		}
+        private int Floor(int Input,int Subtraction)
+		{
+            if(Input-Subtraction<0)
+                return 0;
+            else
+                return Input-Subtraction;
+		}
+        
+        public void Feed()
         {
-            return Name;
-
+            Hunger=Floor(Hunger,40);
         }
-
-        public string Species { get; set; }
-
-        public void SetSpecies(string species)
-        {
-            Species = species;
-        }
-
-        public string GetSpecies()
-        {
-            return Species;
-
-        }
-        public int Hunger = 50;
-        public int GetHunger()
-        {
-            return Hunger;
-        }
-
-        public int Boredom = 60;
-        public int GetBoredom()
-        {
-            return Boredom;
-        }
-
-        public int Health = 30;
-        public int GetHealth()
-        {
-            return Health;
-        }
-        public void Feed() 
-        {
-            Hunger = Hunger - 40;
-        }
-
         public void SeeDoctor()
 		{
-            Health = Health + 30;
+            Health=Ceiling(Health,30);
 		}
-
         public void Play()
 		{
-            Hunger = Hunger + 10;
-            Boredom = Boredom - 20;
-            Health = Health + 10;
+            Health=Ceiling(Health,10);
+            Hunger=Ceiling(Hunger,10);
+            Boredom=Floor(Boredom,20);
 		}
         public void Tick()
 		{
-            Hunger = Hunger + 5;
-            Boredom = Boredom + 5;
-            Health = Health - 5;
+            Health=Floor(Health,5);
+            Hunger=Ceiling(Hunger,5);
+            Boredom=Ceiling(Boredom,5);
 		}
-        public void TakeANap() 
+        public void TakeANap()
         {
-            Health = Health + 10;
-            Boredom = Boredom - 5;
-            Hunger = Hunger + 10;
+            Health=Ceiling(Health,10);
+            Hunger=Floor(Hunger,5);
+            Boredom=Ceiling(Boredom,10);
         }
-
         public void TakeToDoctor()
         {
-            Health = Health + 20;
-            Boredom = Boredom + 5;
-            Hunger = Hunger + 10;
+            Health=Ceiling(Health,20);
+            Hunger=Ceiling(Hunger,10);
+            Boredom=Ceiling(Boredom,5);
         }
-
-
     }
-
-        
-
 }
